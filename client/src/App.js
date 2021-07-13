@@ -20,6 +20,8 @@ import Profiles from './components/Profile/AllProfiles';
 import Dashboard_patient from'./components/auth/patient/PatientDashboard';
 import Questionnaire from'./components/auth/patient/Questionnaire';
 import MedicalFile from'./components/MedicalFile/MedicalFile';
+import Rdv from './components/RDV/RendezVous';
+import ListRdv from './components/RDV/ListRendezVous';
 //import {getCurrentProfile} from './js/actions/profileActions';
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +51,8 @@ function App() {
          <Route path="/Dashboard_patient" component={ Dashboard_patient} />  
          <Route path="/Questionnaire" component={ Questionnaire} />  
          <Route path="/medicalFile" component={ MedicalFile} />  
+         <Route path="/Appointment" component={ Rdv} /> 
+         <Route path="/ListRdv" component={ ListRdv} /> 
          <Footer/>
 
   </Switch>

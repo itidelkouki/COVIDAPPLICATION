@@ -35,8 +35,10 @@ const CardMedicalFile = () => {
           <CardTitle tag="h5">bloodType : {medicalfile && medicalfile.bloodType} </CardTitle>
           <br/>
             <div style={{display:'flex', margin:'10px', alignItems:'center', textAlign:'center'}}>
-          <Button  color="warning"   onClick={()=>delet(medicalfile._id)} >Delete</Button>          
+          <Button  color="warning"   onClick={()=>delet(medicalfile._id)} >Delete</Button>
+          <Link to="/Appointment">
           <Button  color="warning"  >Appointement</Button>  
+          </Link> 
           <Link to="/Dashboard_patient">
           <Button  color="warning"  >Back</Button> 
           </Link> 
