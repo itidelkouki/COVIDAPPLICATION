@@ -3,11 +3,11 @@ import {
     Card, CardImg,  CardBody,
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
-import '../PatientArea.css';
+  import'../auth/patient/PatientArea.css';
 import {deleteprofile} from '../../js/actions/profileActions';
 import { useDispatch} from 'react-redux';
-import EditModalProfile from "./EditModalProfile";
-import DoctorDashboard from '../DoctorDash';
+
+//import DoctorDashboard from '../DoctorDash';
 //import {Link} from 'react-router-dom';
 
 const ProfileItem = ({profile}) => {
@@ -16,22 +16,23 @@ const dispatch = useDispatch();
 const deleteProf = (id) => dispatch(deleteprofile(id));
 
     return (
-        <div className="row">   
+        
+        <div className="row" style={{marginTop:'5px' }}>   
         <div className="col-md-4">
-            <Card className="client-signin">
-            <div className="profile-1">
+            <Card className="client-signin" style={{justifyContent:'space-around' ,marginRight:'2px',marginLeft:'2px', marginTop:'2px',marginBottom:'2px'}}>
+            <div className="profile-1" style={{textAlign:'center', justifyContent:'space-around', }}>
                     <div className="profile-img">
-                    <CardImg top width="40%" sizes="20%" src="https://i.pinimg.com/originals/64/34/d7/6434d72ce9e16251c4f41f4e5a146567.png" alt="Card image cap" />
+                    <CardImg top src="https://i.pinimg.com/originals/64/34/d7/6434d72ce9e16251c4f41f4e5a146567.png" alt="Card image cap" style={{width:"30%", height:"30%" ,marginTop:'0px' , }}  />
 
                     </div>
                     <div className="profile-details">
                         <div className="profile-desc">
-                            <h2 className="profile-heading"><strong>Tel:{profile.tel}</strong></h2>
-                            <p className="profile-p"><strong>Clinic:{profile.clinic}</strong> </p>
-                            <p className="profile-p2"><strong>website:{profile.website}</strong> </p>
-                            <p className="profile-p2"><strong>Location:{profile.location}</strong> </p>
+                            <p className="profile-heading"><strong>TEL:{profile.tel}</strong></p>
+                            <p className="profile-p"><strong>CLINIC:{profile.clinic}</strong> </p>
+                            <p className="profile-p2"><strong>WEBSITE:{profile.website}</strong> </p>
+                            <p className="profile-p2"><strong>LOCATION:{profile.location}</strong> </p>
                             <Button color="warning"  onClick={()=>deleteProf(profile._id) }> delete</Button>
-                            <EditModalProfile  profile={profile} />
+                            
                            
                         </div>
                     </div>

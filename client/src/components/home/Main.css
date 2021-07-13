@@ -5,12 +5,20 @@
   padding-bottom: 50px;
   background-image: linear-gradient(120deg, #be99be, #dab4df, #e9d2ee);
 }*/
+.profilecontainer{
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #9c6c9e;
+  text-align: right;
+
+}
 .car-image {
   background-image: url("https://image.freepik.com/vecteurs-libre/nombreux-virus-corona-flottant-fond-blanc-concept-prevention-maladies-par-virus_68708-865.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
-  height: 100vh;
+  height: 120vh;
  color: #fff;
   display: flex;
   justify-content: center;
@@ -66,7 +74,8 @@ height: min-content;
   padding: 30px 20px;
   height: 520px;
   width: 355px;
-  background-image: linear-gradient(120deg, #be99be, #dab4df, #e9d2ee)
+  background-image: linear-gradient(120deg, #be99be, #dab4df, #e9d2ee);
+  
 }
 .card-title,
 .icon {

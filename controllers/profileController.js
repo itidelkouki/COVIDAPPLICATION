@@ -75,7 +75,7 @@ getCurrentProfile : async (req, res) => {
     try {
         
         console.log('start');
-        const profile = await Profile.findOne({_id: req.doctor._id }).populate('doctorId');
+        const profile = await Profile.findOne({doctorId: req.doctor._id  }).populate('doctorId');
         console.log('1',profile);
 
         if(!profile) {

@@ -14,7 +14,7 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import { loginUser } from '../js/actions/authActions';
+import { loginUser } from '../../../js/actions/authActions';
 
 const LoginModal = () => {
   const [modal, setModal] = useState(false);
@@ -28,7 +28,9 @@ const LoginModal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleLogin = () => {
+  const handleLogin = async e => {
+    e.preventDefault();
+  
     dispatch(loginUser({ email, password }));
     history.push('/doctordashboard');
     setEmail('');

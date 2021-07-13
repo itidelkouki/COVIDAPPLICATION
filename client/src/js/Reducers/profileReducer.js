@@ -15,12 +15,13 @@ import {
 const initialState = {
 
     profiles: [],
-    isAuth: true,
+    isAuth: false,
     loading: true,
     msg: null,
     profileById: null,
+    profile:null,
     //error: {},
-   // token: localStorage.getItem('token'), //null
+    //token: localStorage.getItem('token'), //null
    // isAuth: false,
     //msg: null,
 }
@@ -40,7 +41,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
         return {
           ...state,
           loading: false,
-          //isAuth: true,
+          isAuth: true,
           msg: payload.msg,
           ...payload,
         };
@@ -51,17 +52,12 @@ const profileReducer= (state = initialState, { type, payload }) => {
                   ...state,
                   loading: false,
                   isAuth: true,
-                  ...payload,
+                  //...payload,
+                  profile: payload,
+                  msg: payload.msg,
                 };
 
-        case GET_PROFILE_BY_ID:
-            return {
-                ...state,
-                //profileById: payload.profile,
-                loading: false,
-                isAuth:true,
-                ...payload,
-            };
+        
             case GET_PROFILES:
                 console.log(payload);
                 return {
@@ -83,7 +79,8 @@ const profileReducer= (state = initialState, { type, payload }) => {
                 loading: false,
                 isAuth: true,
                 msg: payload.msg,
-                // ...payload,
+                profile:null,
+               // ...payload,
 
             };
             case LOGOUT_USER:
@@ -92,7 +89,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                   ...state,
                   token: null,
                   isAuth: false,
-                  
+                  profile:null,
                   profileById: null,
                   loading: false,
                   msg:null

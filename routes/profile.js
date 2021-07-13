@@ -28,11 +28,11 @@ router.put("/editProfile/:id",isAuth,profileController.editProfile)
 router.get("/:id",isAuth,profileController.getProfileById)
 
 
-// @route   GET http://localhost:5000/api/profiles/me
+// @route   GET http://localhost:5000/api/profiles/connectedDoctor/me
 // @desc    Get current doctor profile
 // @access  Private
 
-router.get("/me",isAuth,profileController.getCurrentProfile)
+router.get("/connectedDoctor/me",isAuth,profileController.getCurrentProfile)
 
 
 module.exports=router

@@ -9,51 +9,52 @@ import {
   
   const initialState = {
     token: localStorage.getItem('token'), //null
-    doctor: null,
-    isAuthDoctor: false,
-    loading: true,
+    user: null,
+    isAuth: false,
+    isLoading: true,
     msg: null,
   };
   
-  const authReducer = (state = initialState, { type, payload }) => {
+  const authPatientReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case USER_LOADING:
         return {
           ...state,
-          loading: true,
+          isLoading: true,
         };
       case REGISTER_USER:
       case LOGIN_USER:
         localStorage.setItem('token', payload.token);
         return {
           ...state,
-          loading: false,
-          isAuthDoctor: true,
+          isLoading: false,
+          isAuth: true,
           msg: payload.msg,
           ...payload,
-         // doctor:payload.doctor
         };
       case GET_AUTH_USER:
-        console.log(payload);
         return {
           ...state,
-          loading: false,
-          isAuthDoctor: true,
+          isLoading: false,
+          isAuth: true,
           ...payload,
         };
       case AUTH_ERRORS:
       case LOGOUT_USER:
-        //localStorage.removeItem('token');
+        localStorage.removeItem('token');
         return {
           ...state,
           token: null,
-          isAuthDoctor: false,
-          doctor: null,
-          loading: false,
+          isAuth: false,
+          user: null,
+          isLoading: false,
         };
       default:
         return state;
     }
   };
   
-  export default authReducer;
+  export default authPatientReducer;
+  
+  
+    

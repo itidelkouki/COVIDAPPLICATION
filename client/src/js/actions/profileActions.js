@@ -11,16 +11,17 @@ const userLoading = () => (dispatch) => {
   });
 };
 //Get current doctors profile
-/*export const getCurrentProfile = () => async dispatch => {
+export const getCurrentProfile = () => async dispatch => {
+  dispatch(userLoading());
     try {
 
       const config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token'),
+         'x-auth': localStorage.getItem('token'),
         }
     }
 
-        const res = await axios.get('/api/profiles/me',config);
+        const res = await axios.get('http://localhost:5000/api/profiles/connectedDoctor/me',config);
         console.log('res5',res);
         dispatch({
             type: GET_PROFILE,
@@ -28,7 +29,7 @@ const userLoading = () => (dispatch) => {
         });
     } catch (error) {
         console.log(error);
-        // BA3ED
+       
         console.dir(error);
         const { errors, msg } = error.response.data;
     
@@ -46,14 +47,14 @@ const userLoading = () => (dispatch) => {
       }
     };
 
-*/
+
 // Get all profiles
 export const getProfile = () => async dispatch => {
   
     try {
       const config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token'),
+         'x-auth': localStorage.getItem('token'),
         }
     }
 
@@ -77,7 +78,7 @@ export const getProfileById = (profileId) => async dispatch => {
     try {
       const config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token'),
+         'x-auth': localStorage.getItem('token'),
         }
     }
     
@@ -103,7 +104,7 @@ export const createProfile = (formData) => async dispatch => {
     try {
       const config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token'),
+         'x-auth': localStorage.getItem('token'),
         }
     }
         const res = await axios.post('/api/profiles/newProfile', formData,config);
@@ -139,7 +140,7 @@ export const createProfile = (formData) => async dispatch => {
     try {
       const config = {
         headers: {
-          'x-auth-token': localStorage.getItem('token'),
+         'x-auth': localStorage.getItem('token'),
         }
     }
       const res = await axios.delete("http://localhost:5000/api/profiles/deleteProfile/"+profileId ,config);
@@ -168,7 +169,7 @@ export const editProfile = (idProfile,editedProfile) => async (dispatch) => {
   try {
     const config = {
       headers: {
-        'x-auth-token': localStorage.getItem('token'),
+       'x-auth': localStorage.getItem('token'),
       }
   }
     const res = await axios.put("http://localhost:5000/api/profiles/editProfile/"+idProfile,editedProfile,config);
@@ -178,6 +179,6 @@ export const editProfile = (idProfile,editedProfile) => async (dispatch) => {
       payload: res.data,//{ msg: "Profile created", Profile, user });
 
     });
-    dispatch(getProfile());
+    dispatch(getCurrentProfile());
   } catch (error) {
     console.log(error);}};

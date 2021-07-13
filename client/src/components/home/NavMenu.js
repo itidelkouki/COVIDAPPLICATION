@@ -3,7 +3,7 @@ import React, { useState, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Nav.css';
 import { Link } from "react-router-dom";
-import { logout } from '../js/actions/authActions';
+import { logout } from '../../js/actions/authActions';
 import {
   Collapse,
   Navbar,
@@ -18,36 +18,41 @@ const NavMenu = () =>{
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
-  const isAuth = useSelector((state) => state.authReducer.isAuth);
+  const isAuthDoctor = useSelector((state) => state.authReducer.isAuthDoctor);
+  const isAuth = useSelector((state) => state.authPatientReducer.isAuth);
   const doctor = useSelector((state) => state.authReducer.doctor);
-
+  
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutUser = () => {
     dispatch(logout());
   };
   const authLinks = (
-    <div className="doctor-nav">
+    //<div className="doctor-nav">
+    <div classNameName="home" style={{textTransform:' uppercase',letterSpacing: '0.2rem',fontFamily:'"Open Sans", sans-serif'}} >
+    <nav className="nav">
+    <div className="container" >
     <Fragment>
-      <NavItem>
-      </NavItem>
-      <Link to="/">
-      <NavLink href="/" onClick={logoutUser}>
-        Logout
-      </NavLink>
-      </Link>
+      <div className="logout">
+    
+    <li><a href="/" onClick={logoutUser} >Logout</a></li>
+    </div>
     </Fragment>
+    </div>
+    </nav>
     </div>
   );
 
   const guestLinks = (
     <div classNameName="home">
-    <nav className="nav">
-    <div className="container">
-    <img  style={{width:'80px',height:'80px',borderRadius:'50%'
+    <nav className="nav" style={{letterSpacing: '0.1rem',fontFamily:'"Open Sans", sans-serif'}}>
+    <div className="logocovid">
+    <img  style={{width:'50px',height:'50px',borderRadius:'50%'
           
         }}src='https://png.pngtree.com/png-clipart/20200701/original/pngtree-yellow-coronavirus-vector-illustration-png-image_5342658.jpg'/>
-      <h1 className="logo"><a href="/">Covid-Care.tn</a></h1>
+      <h2 className="logo"><a href="/">Covid-Care.tn</a></h2>
+      </div>
+      <div>
       <ul>
       <Link to="/">
         <li><a className="current">About us</a></li>
@@ -60,7 +65,7 @@ const NavMenu = () =>{
         <li><a>For doctor</a></li>
         </Link>
       </ul>
-    </div>
+      </div>
   </nav>
   </div>
   );
@@ -74,7 +79,7 @@ const NavMenu = () =>{
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {isAuth ? authLinks : guestLinks}
+            {isAuth || isAuthDoctor ? authLinks : guestLinks}
           </Nav>
         </Collapse>
       </Container>
@@ -87,4 +92,17 @@ const NavMenu = () =>{
           <span className="navbar-text mr-3">
             <strong>{doctor ? `Welcome ${doctor.name}` : null}</strong>
           </span>
-        </Link>*/
+        </Link>
+          <NavLink href="/doctors" onClick={logoutUser}>
+        Logout
+      </NavLink>
+      
+     
+      <NavLink href="/doctordashboard">
+        Back to dashboard
+      </NavLink>
+     
+        
+        <li><a href="/doctordashboard"> Back to dashboard</a></li>
+        
+        */

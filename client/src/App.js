@@ -1,34 +1,38 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
-import { getAuthUser } from './js/actions/authActions';
+import { getAuthUser} from './js/actions/authActions';
+import { getAuthPatient} from './js/actions/authPatientActions';
 import Switch from 'react-bootstrap/esm/Switch';
-import Homepage from './components/Homepage';
+import Homepage from './components/home/Homepage';
 import { Route } from "react-router-dom";
-import PatientArea from './components/PatientArea';
-import NavMenu from './components/NavMenu';
-import DoctorArea from './components/DoctorArea';
-import OurServices from './components/OurServices';
-import Footer from "./components/Footer";
-import Doctorlogin from "./components/Doctorlogin"
-import ModalPatient from './components/ModalPatient';
-import DoctorDashboard from './components/DoctorDash';
+import PatientArea from './components/auth/patient/PatientArea';
+import NavMenu from './components/home/NavMenu';
+import DoctorArea from './components/auth/doctor/DoctorArea';
+import OurServices from './components/home/OurServices';
+import Footer from "./components/home/Footer";
+import Doctorlogin from "./components/auth/doctor/Doctorlogin"
+import ModalPatient from './components/auth/patient/ModalPatient';
+import DoctorDashboard from './components/auth/doctor/DoctorDash';
 import CreateProfile from './components/Profile/CreateProfile';
 import ProfileDoctor from './components/Profile/ProfileDoctor';
 import Profiles from './components/Profile/AllProfiles';
-import ProfileById from './components/Profile/ProfileById';
-import {getCurrentProfile} from './js/actions/profileActions';
+import Dashboard_patient from'./components/auth/patient/PatientDashboard';
+import Questionnaire from'./components/auth/patient/Questionnaire';
+import MedicalFile from'./components/MedicalFile/MedicalFile';
+//import {getCurrentProfile} from './js/actions/profileActions';
 function App() {
   const dispatch = useDispatch();
   //const { isLoading } = useSelector((state) => state.authReducer);
-  const getUser = () => dispatch(getAuthUser());
-  useEffect(() => {
-    getUser();
+ const getUser = () => dispatch(getAuthUser());
+  const getPatient = ()=>dispatch(getAuthPatient());
+ useEffect(() => {
+   getUser();
+    getPatient();
   }, []);
 
   return (
-  <div className=
-  "App">
+  <div className="App">
   <Switch>
   <NavMenu/>
   
@@ -42,8 +46,9 @@ function App() {
          <Route path='/doctorprofile' component={ProfileDoctor} />
          <Route path="/patientlog" component={ModalPatient} />
          <Route path='/profiles' component={Profiles} />
-         <Route path='/doctor/:id' component={ProfileById} />
-         
+         <Route path="/Dashboard_patient" component={ Dashboard_patient} />  
+         <Route path="/Questionnaire" component={ Questionnaire} />  
+         <Route path="/medicalFile" component={ MedicalFile} />  
          <Footer/>
 
   </Switch>

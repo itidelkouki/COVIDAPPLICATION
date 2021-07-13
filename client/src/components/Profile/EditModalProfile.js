@@ -1,9 +1,17 @@
-import React,{useState} from "react";
-import {useDispatch} from "react-redux";
+import React,{useState,useEffect} from "react";
+import {useDispatch,useSelector} from "react-redux"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input } from 'reactstrap';
-import { editProfile } from "../../js/actions/profileActions";
-import '../PatientArea.css';
-const Editprofile = ({profile}) => {
+import { editProfile ,getCurrentProfile} from "../../js/actions/profileActions";
+import { useHistory } from 'react-router-dom';
+import'../auth/patient/PatientArea.css';
+const Editprofile = () => {
+  const getCurrent = () => dispatch(getCurrentProfile());
+  useEffect(() => {
+    getCurrent();
+  }, [getCurrent]);
+
+
+  const profile = useSelector((state)=> state.profileReducer.profile);
     const [tel,setTel]=useState(profile.tel)
     const [clinic,setClinic]=useState(profile.clinic)
     const [website,setWebsite]=useState(profile.website)
@@ -19,27 +27,23 @@ const Editprofile = ({profile}) => {
       setLocation(profile.location)
     };
   const dispatch=useDispatch()
-
+  const history = useHistory();
   const edit=()=>{
-    dispatch(editProfile(profile._id,{ tel, clinic, website, location}))
-    toggle()
+    dispatch(editProfile(profile._id,{ tel, clinic, website, location}));
+    
+    toggle();
+    history.push('/doctorprofile')
   }
-//   setWeight('');
-//   setMedicalHistory('');
-//   setAllergiesName('');
-//   setBloodType('');
   
-
   return (
     <div className="container">
     <div class="contact-container">
-       {/* <div class="right-col"> */}
        <div className="component">
        
     <div>
-    <Button color="warning" onClick={toggle}>edit</Button>
+    <Button className="btn btn-info" onClick={toggle}>Edit Profile</Button>
     <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Edited profile</ModalHeader>
         <ModalBody>
         <Form>
       <FormGroup>
@@ -91,7 +95,8 @@ const Editprofile = ({profile}) => {
       </Form>     
        </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={edit}>Edit profile</Button>{' '}
+
+          <Button className="btn btn-info" onClick={edit}>Edit profile</Button>{' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>

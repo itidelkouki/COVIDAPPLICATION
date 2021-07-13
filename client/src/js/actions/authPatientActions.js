@@ -6,7 +6,7 @@ import {
   LOGOUT_USER,
   GET_AUTH_USER,
   AUTH_ERRORS,
-} from '../constants/ActionsTypes';
+} from  '../constants/ActionsTypes';
 
 //Set the user loading
 const userLoading = () => (dispatch) => {
@@ -16,17 +16,17 @@ const userLoading = () => (dispatch) => {
 };
 
 // Register USer
-export const registerUser = (formData) => async (dispatch) => {
+export const registerPatient= (formData) => async (dispatch) => {
   dispatch(userLoading());
   try {
-    const res = await axios.post('/api/auth/register', formData);
+    const res = await axios.post('/api/authPatient/registre', formData);
     dispatch({
       type: REGISTER_USER,
       payload: res.data, // { msg: 'User registred with success', user, token }
     });
   } catch (error) {
-    console.log(error);
-    // BA3ED
+    // console.log(error);
+    // // BA3ED
     console.dir(error);
     const { errors, msg } = error.response.data;
 
@@ -45,11 +45,11 @@ export const registerUser = (formData) => async (dispatch) => {
 };
 
 // Login User
-export const loginUser = (formData) => async (dispatch) => {
+export const loginPatient = (formData) => async (dispatch) => {
   dispatch(userLoading());
 
   try {
-    const res = await axios.post('/api/auth/login', formData);
+    const res = await axios.post('/api/authPatient/login', formData);
     dispatch({
       type: LOGIN_USER,
       payload: res.data, // { msg: 'Logged in with success', user, token }
@@ -74,7 +74,7 @@ export const loginUser = (formData) => async (dispatch) => {
 };
 
 // Get auth user
-export const getAuthUser = () => async (dispatch) => {
+export const getAuthPatient = () => async (dispatch) => {
   dispatch(userLoading());
 
   try {
@@ -84,12 +84,10 @@ export const getAuthUser = () => async (dispatch) => {
         'x-auth': localStorage.getItem('token'),
       },
     };
-    const res = await axios.get('/api/auth/doctor', config);
-    console.log('res3',res);
+    const res = await axios.get('/api/authPatient/authUser', config);
     dispatch({
       type: GET_AUTH_USER,
       payload: res.data, // {user: req.user}
-
     });
   } catch (error) {
     console.log(error);
@@ -104,3 +102,5 @@ export const logout = () => (dispatch) => {
     type: LOGOUT_USER,
   });
 };
+
+

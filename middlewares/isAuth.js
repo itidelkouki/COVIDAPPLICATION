@@ -2,9 +2,9 @@
 const jwt = require('jsonwebtoken');
 
 // Require the user Schema
-const Doctor = require('../models/doctor');
+const User = require('../models/User');
 
-const isAuthDoctor = async (req, res, next) => {
+const isAuth = async (req, res, next) => {
   try {
     const token = req.headers['x-auth'];
 
@@ -16,15 +16,15 @@ const isAuthDoctor = async (req, res, next) => {
     const decoded = await jwt.verify(token, process.env.secretOrKey);
 
     // Add User from payload
-    const doctor = await Doctor.findById(decoded.id);
+    const user = await User.findById(decoded.id);
 
     //Check for user
-    if (!doctor) {
+    if (!user) {
       return res.status(401).send({ msg: 'authorization denied' });
     }
 
     // Create user
-    req.doctor = doctor;
+    req.user = user;
 
     next();
   } catch (error) {
@@ -32,4 +32,4 @@ const isAuthDoctor = async (req, res, next) => {
   }
 };
 
-module.exports = isAuthDoctor;
+module.exports = isAuth;

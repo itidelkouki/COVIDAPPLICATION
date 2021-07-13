@@ -4,7 +4,7 @@ const router = require('express').Router();
 
 const auth=require("../controllers/authdoctorController")
 // Require the isAuth middleware
-const isAuth = require('../middlewares/isAuthDoctor');
+const isAuthDoctor = require('../middlewares/isAuthDoctor');
 
 // require validators
 const {
@@ -30,7 +30,7 @@ router.post('/login', loginRules(), validator, auth.login);
 //@route GET api/auth/doctor
 //@desc Get authentified doctor
 //@access Private
-router.get('/doctor', isAuth, auth.getCurrentUser );
+router.get('/doctor', isAuthDoctor, auth.getCurrentUser );
 
 
 module.exports = router;

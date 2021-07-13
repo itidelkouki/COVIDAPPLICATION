@@ -3,7 +3,7 @@ import React, {useState, Fragment} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import {connect} from 'react-redux';
 import {createProfile} from '../../js/actions/profileActions';
-import '../PatientArea.css';
+import'../auth/patient/PatientArea.css';
 import { useHistory } from 'react-router-dom';
 import {Button} from 'reactstrap';
 const CreateProfile = ({}) => {

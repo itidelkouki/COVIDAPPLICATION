@@ -5,9 +5,7 @@ const ProfileSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Doctor'
     },
-  /* image:{
-       type:String
-   },*/
+
     tel:{
         type:Number
     },

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './PatientArea.css';
+import '../patient/PatientArea.css';
 //import DoctorDash from "./DoctorDash";
-import { registerUser } from '../js/actions/authActions';
+import { registerUser } from '../../../js/actions/authActions';
 import {
   Card, CardImg,  CardBody,
   CardTitle, CardSubtitle, Button
