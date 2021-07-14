@@ -13,17 +13,18 @@ import {
 
 const DoctorDashboard = () => {
   const dispatch=useDispatch()
-  const getCurrent = () => dispatch(getCurrentProfile());
-  useEffect(() => {
-    getCurrent();
-},[]);
+//const getCurrent = () => dispatch(getCurrentProfile());
 
-  const getPro = () => {dispatch(getProfile());
-    history.push('/profiles');
+ /* useEffect(() => {
+  getCurrent();
+ },[]);*/
+
+  const getCurrent  = () => {dispatch(getCurrentProfile());
+    history.push('/doctorprofile');
   }
 
   const deleteProf = (id) => dispatch(deleteprofile(id));
-  
+  const doctor = useSelector((state) => state.authReducer.doctor);
   const profile = useSelector((state)=> state.profileReducer.profile);
   const loading = useSelector((state)=> state.profileReducer.loading);
   console.log(profile);
@@ -31,12 +32,10 @@ const DoctorDashboard = () => {
 
    
 const history = useHistory();
-const doctor = useSelector((state) => state.authReducer.doctor);
+
 console.log(doctor);
 
-  return    loading && profile == null ? (
-    <Spinner />
-) : (
+  return   (
     <div style={{justifyContent:'space-around'  , marginLeft:'80px'}}>
 <h1 className="mb-3 ml-4" style={{marginLeft:'80px' , fontFamily:'"Open Sans", sans-serif', justifyContent:'space-around'  , padding:'20px',
 color: '#e4a1ff',
@@ -44,7 +43,7 @@ textTransform:' uppercase',
 fontSize: '2rem',
 letterSpacing: '0.4rem',
 fontWeight: '600'}}>{doctor ? `Welcome Doctor ${doctor.name} ${doctor.name}` : null}</h1>
-{profile !== null ? (
+
      
       
       <div style={{display:'flex',flex:'wrap'}}>
@@ -62,14 +61,25 @@ fontWeight: 'bold'}} tag="h5">Profile</CardTitle>
           <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}}>lASTNAME: {doctor && doctor.lastName}</CardSubtitle>
           <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >Email: {doctor && doctor.email}</CardSubtitle>
 
-          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >TEL: {profile && profile.tel}</CardSubtitle>
-          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >CLINIC: {profile && profile.clinic}</CardSubtitle>
-          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >lOCATION:{profile && profile.location}</CardSubtitle>
-          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >WEBSITE   :{profile && profile.website}</CardSubtitle>
-          <br/>
-          <Button className="btn btn-info" onClick={()=>deleteProf(profile._id) }>delete</Button>
-          <Button className="btn btn-info"  onClick= {getPro}>View profiles</Button>
+          {/* <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >TEL: { profile.tel}</CardSubtitle>
+          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >CLINIC: {profile.clinic}</CardSubtitle>
+          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >lOCATION:{profile.location}</CardSubtitle>
+          <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >WEBSITE   :{profile.website}</CardSubtitle>
+          <br/> */}
+          {/* <Button className="btn btn-info" onClick={()=>deleteProf(profile._id) }>delete</Button> */}
+          <Button className="btn btn-info"  onClick= {getCurrent}>View profile</Button>
 
+          {/* <Button className="btn btn-info"  onClick= {getPro}>View profiles</Button> */}
+          <br/>
+          <div>
+      
+      <p>You have not any Profile add your Profile..</p>
+      <Link to='/create-profile' className="btn btn-info">
+      Create Profile
+      </Link>
+      {/* <img src="https://png.pngtree.com/element_our/png_detail/20181026/doctor-avatar-icon-medical-health-specialist-avatar-woman-doctor-avatar-png_219874.jpg" style={{ height:'300px',  width:'300px', borderRadius:'50%' }}/>  */}
+
+      </div>
           
         </CardBody>
       </Card>
@@ -77,20 +87,12 @@ fontWeight: 'bold'}} tag="h5">Profile</CardTitle>
       <img src="https://png.pngtree.com/element_our/png_detail/20181026/doctor-avatar-icon-medical-health-specialist-avatar-woman-doctor-avatar-png_219874.jpg" style={{ height:'500px',  width:'400px', marginLeft:'300px', borderRadius:'50%' }}/> 
       
       </div>
-      <EditModalProfile/>
+      {/* <EditModalProfile/> */}
     </div>
     
-      ):(
-        <div>
+     
       
-      <p>You have not any Profile add your Profile..</p>
-      <Link to='/create-profile' className="btn btn-info">
-      Create Profile
-      </Link>
-      <img src="https://png.pngtree.com/element_our/png_detail/20181026/doctor-avatar-icon-medical-health-specialist-avatar-woman-doctor-avatar-png_219874.jpg" style={{ height:'300px',  width:'300px', borderRadius:'50%' }}/> 
-
-      </div>
-      )}
+      
     </div>
 
   );
@@ -106,4 +108,14 @@ export default DoctorDashboard;
       <button color="warning"  onClick={()=>deleteProf(profile._id) }> delete</button>
       <EditModalProfile />
       
-      <button onClick= {getPro}> see all Doctors profiles</button>*/
+      <button onClick= {getPro}> see all Doctors profiles</button>
+      
+  
+
+
+      
+      
+      
+      
+      
+      */

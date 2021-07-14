@@ -6,14 +6,14 @@ export const GET_AUTH_USER = 'GET_AUTH_USER';
 export const AUTH_ERRORS = 'AUTH_ERRORS';
 
 //dOCTOR
-/*
+
   export const DOCTOR_LOADING = 'DOCTOR_LOADING';
   export const LOGIN_DOCTOR = 'LOGIN_DOCTOR';
   export const REGISTER_DOCTOR = 'REGISTER_DOCTOR';
   export const LOGOUT_DOCTOR = 'LOGOUT_DOCTOR';
   export const GET_AUTH_DOCTOR = 'GET_AUTH_DOCTOR';
 
-*/
+
 
 
 

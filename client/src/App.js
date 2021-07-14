@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import { getAuthUser} from './js/actions/authActions';
 import { getAuthPatient} from './js/actions/authPatientActions';
+import {getCurrentProfile}from './js/actions/profileActions';
 import Switch from 'react-bootstrap/esm/Switch';
 import Homepage from './components/home/Homepage';
 import { Route } from "react-router-dom";
@@ -28,10 +29,13 @@ function App() {
   //const { isLoading } = useSelector((state) => state.authReducer);
  const getUser = () => dispatch(getAuthUser());
   const getPatient = ()=>dispatch(getAuthPatient());
- useEffect(() => {
-   getUser();
-    getPatient();
-  }, []);
+  const getCurrent = () => dispatch(getCurrentProfile());
+  
+useEffect(() => {
+    getUser();
+  //  getPatient();
+   // getCurrent();
+   }, [getUser]);
 
   return (
   <div className="App">

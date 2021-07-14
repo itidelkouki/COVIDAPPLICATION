@@ -36,8 +36,8 @@ const NavMenu = () =>{
       <div className="logout">
     
     <li><a href="/" onClick={logoutUser} >Logout</a></li>
-    <Link to="/Appointment" ><li><a href="/Appointment"></a></li> </Link>
-    <Link to="/ListRdv" ><li><a href="/ListRdv"></a></li> </Link>
+    {/* <Link to="/Appointment" ><li><a href="/Appointment"></a></li> </Link>
+    <Link to="/ListRdv" ><li><a href="/ListRdv"></a></li> </Link> */}
 
 
     </div>

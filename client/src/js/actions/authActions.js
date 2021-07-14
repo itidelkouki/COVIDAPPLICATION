@@ -1,17 +1,17 @@
 import axios from 'axios';
 import {
-  USER_LOADING,
-  LOGIN_USER,
-  REGISTER_USER,
-  LOGOUT_USER,
-  GET_AUTH_USER,
+  DOCTOR_LOADING,
+  LOGIN_DOCTOR,
+  REGISTER_DOCTOR,
+  LOGOUT_DOCTOR,
+  GET_AUTH_DOCTOR,
   AUTH_ERRORS,
 } from '../constants/ActionsTypes';
 
 //Set the user loading
 const userLoading = () => (dispatch) => {
   dispatch({
-    type: USER_LOADING,
+    type: DOCTOR_LOADING,
   });
 };
 
@@ -21,29 +21,16 @@ export const registerUser = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/api/auth/register', formData);
     dispatch({
-      type: REGISTER_USER,
+      type: REGISTER_DOCTOR,
       payload: res.data, // { msg: 'User registred with success', user, token }
     });
   } catch (error) {
     console.log(error);
-    // BA3ED
-    console.dir(error);
-    const { errors, msg } = error.response.data;
-
-    if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
-    }
-    console.log(errors);
-    if (msg) {
-      alert(msg);
-    }
-
     dispatch({
       type: AUTH_ERRORS,
     });
   }
 };
-
 // Login User
 export const loginUser = (formData) => async (dispatch) => {
   dispatch(userLoading());
@@ -51,22 +38,11 @@ export const loginUser = (formData) => async (dispatch) => {
   try {
     const res = await axios.post('/api/auth/login', formData);
     dispatch({
-      type: LOGIN_USER,
+      type: LOGIN_DOCTOR,
       payload: res.data, // { msg: 'Logged in with success', user, token }
     });
   } catch (error) {
-    console.dir(error);
-
-    const { errors, msg } = error.response.data;
-
-    if (Array.isArray(errors)) {
-      errors.forEach((err) => alert(err.msg));
-    }
-    console.log(errors);
-    if (msg) {
-      alert(msg);
-    }
-
+    console.log(error);
     dispatch({
       type: AUTH_ERRORS,
     });
@@ -87,7 +63,7 @@ export const getAuthUser = () => async (dispatch) => {
     const res = await axios.get('/api/auth/doctor', config);
     console.log('res3',res);
     dispatch({
-      type: GET_AUTH_USER,
+      type: GET_AUTH_DOCTOR,
       payload: res.data, // {user: req.user}
 
     });
@@ -101,6 +77,6 @@ export const getAuthUser = () => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   dispatch({
-    type: LOGOUT_USER,
+    type:  LOGOUT_DOCTOR,
   });
 };

@@ -28,24 +28,12 @@ export const getCurrentProfile = () => async dispatch => {
             payload: res.data
         });
     } catch (error) {
-        console.log(error);
-       
-        console.dir(error);
-        const { errors, msg } = error.response.data;
-    
-        if (Array.isArray(errors)) {
-          errors.forEach((err) => alert(err.msg));
-        }
-        console.log(errors);
-        if (msg) {
-          alert(msg);
-        }
-    
-        dispatch({
-          type: AUTH_ERRORS,
-        });
-      }
-    };
+      console.log(error);
+      dispatch({
+        type: AUTH_ERRORS,
+      });
+    }
+  };
 
 
 // Get all profiles
@@ -65,13 +53,13 @@ export const getProfile = () => async dispatch => {
             payload: res.data,
            
         });
-    } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: AUTH_ERRORS,
+      });
     }
-};
+  };
 
  //Get profiles by doctor id
 export const getProfileById = (profileId) => async dispatch => {
@@ -88,13 +76,13 @@ export const getProfileById = (profileId) => async dispatch => {
             type: GET_PROFILE_BY_ID,
             payload: res.data
         });
-    } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: AUTH_ERRORS,
+      });
     }
-};
+  };
 // Create NEW PROFILE 
 
 

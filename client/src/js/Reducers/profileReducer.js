@@ -3,8 +3,7 @@ import {
     GET_PROFILE,
     GET_PROFILE_BY_ID,
     GET_PROFILES,
-    //UPDATE_PROFILE,
-    PROFILE_ERROR,
+    AUTH_ERRORS,
     LOGOUT_USER,
     CLEAR_PROFILE,
     //GET_AUTH_USER,
@@ -21,7 +20,7 @@ const initialState = {
     profileById: null,
     profile:null,
     //error: {},
-    //token: localStorage.getItem('token'), //null
+    token: localStorage.getItem('token'), //null
    // isAuth: false,
     //msg: null,
 }
@@ -52,8 +51,8 @@ const profileReducer= (state = initialState, { type, payload }) => {
                   ...state,
                   loading: false,
                   isAuth: true,
-                  //...payload,
-                  profile: payload,
+                  ...payload,
+                  //profile: payload,
                   msg: payload.msg,
                 };
 
@@ -66,13 +65,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                     isAuth:true,
                     loading: false
                 };
-        case PROFILE_ERROR:
        
-            return {
-                ...state,
-                error: payload,
-                loading: false
-            };
         case CLEAR_PROFILE:
             return {
                 ...state,
@@ -95,7 +88,15 @@ const profileReducer= (state = initialState, { type, payload }) => {
                   msg:null
                 };
                 
-
+                case AUTH_ERRORS:
+                    localStorage.removeItem('token');
+                      return {
+                        ...state,
+                        token: null,
+                        isAuth: false,
+                        user: null,
+                        isLoading: false,
+                      };
 
         default:
             return state;

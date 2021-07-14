@@ -15,21 +15,24 @@ const dispatch=useDispatch()
     const getCurrent = () => dispatch(getCurrentProfile());
     useEffect(() => {
       getCurrent();
-    }, [getCurrent]);
+    }, []);
 const profile = useSelector(state=> state.profileReducer.profile);
-const doctor = useSelector((state) => state.authReducer.doctor);
-  
+const tel = useSelector(state=> state.profileReducer.tel);
+const clinic = useSelector((state) => state.profileReducer.clinic);
+const website= useSelector((state) => state.profileReducer.website);
+const location = useSelector((state) => state.profileReducer.location);
     return (
+      <div style={{justifyContent:'space-around'  , marginLeft:'80px'}}>
         <Fragment>
                     <section id="profile-page">
                     <h1 className="mb-3 ml-4" >Doctor Profile</h1>
                             <div className="profilecontainer">
                             
                                 <div>
-                             <h3>{profile && profile.tel} </h3>   
-                             <h3>{profile && profile.clinic} </h3> 
-                             <h3>{profile && profile.website} </h3> 
-                             <h3>{profile && profile.location}</h3> 
+                             <h3>{tel} </h3>   
+                             <h3>{clinic} </h3> 
+                             <h3>{website} </h3> 
+                             <h3>{location}</h3> 
                              </div>
                              <img src="https://png.pngtree.com/element_our/png_detail/20181026/doctor-avatar-icon-medical-health-specialist-avatar-woman-doctor-avatar-png_219874.jpg" style={{ height:'300px',  width:'300px', borderRadius:'50%' }}/>   
 
@@ -37,6 +40,7 @@ const doctor = useSelector((state) => state.authReducer.doctor);
                             </div>
                     </section>
                </Fragment>
+                </div>
     )};
 
   /*const profile=useSelector((state)=> state.profileReducer.profile);

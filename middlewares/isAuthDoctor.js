@@ -13,7 +13,7 @@ const isAuthDoctor = async (req, res, next) => {
       return res.status(401).send({ msg: 'No Token, authorization denied' });
 
     // Verify Token
-    const decoded = await jwt.verify(token, process.env.secretOrKey);
+    const decoded = await jwt.verify(token, process.env.secretOrkey);
 
     // Add User from payload
     const doctor = await Doctor.findById(decoded.id);

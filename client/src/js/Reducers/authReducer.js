@@ -1,9 +1,9 @@
 import {
-    USER_LOADING,
-    LOGIN_USER,
-    REGISTER_USER,
-    LOGOUT_USER,
-    GET_AUTH_USER,
+  DOCTOR_LOADING,
+  LOGIN_DOCTOR,
+  REGISTER_DOCTOR,
+  LOGOUT_DOCTOR,
+  GET_AUTH_DOCTOR,
     AUTH_ERRORS,
   } from '../constants/ActionsTypes';
   
@@ -17,13 +17,13 @@ import {
   
   const authReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-      case USER_LOADING:
+      case DOCTOR_LOADING:
         return {
           ...state,
           loading: true,
         };
-      case REGISTER_USER:
-      case LOGIN_USER:
+      case REGISTER_DOCTOR:
+      case LOGIN_DOCTOR:
         localStorage.setItem('token', payload.token);
         return {
           ...state,
@@ -33,7 +33,7 @@ import {
           ...payload,
          // doctor:payload.doctor
         };
-      case GET_AUTH_USER:
+      case GET_AUTH_DOCTOR:
         console.log(payload);
         return {
           ...state,
@@ -42,8 +42,8 @@ import {
           ...payload,
         };
       case AUTH_ERRORS:
-      case LOGOUT_USER:
-        //localStorage.removeItem('token');
+      case LOGOUT_DOCTOR:
+        localStorage.removeItem('token');
         return {
           ...state,
           token: null,
