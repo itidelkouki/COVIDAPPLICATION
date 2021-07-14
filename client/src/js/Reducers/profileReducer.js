@@ -14,14 +14,14 @@ import {
 const initialState = {
 
     profiles: [],
-    isAuth: false,
+    isAuthDoctor: false,
     loading: true,
     msg: null,
     profileById: null,
     profile:null,
     //error: {},
     token: localStorage.getItem('token'), //null
-   // isAuth: false,
+   // isAuthDoctor: false,
     //msg: null,
 }
 
@@ -40,7 +40,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
         return {
           ...state,
           loading: false,
-          isAuth: true,
+          isAuthDoctor: true,
           msg: payload.msg,
           ...payload,
         };
@@ -50,7 +50,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                 return {
                   ...state,
                   loading: false,
-                  isAuth: true,
+                  isAuthDoctor: true,
                   ...payload,
                   //profile: payload,
                   msg: payload.msg,
@@ -62,7 +62,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                 return {
                     ...state,
                     profiles: payload.profiles,
-                    isAuth:true,
+                    isAuthDoctor:true,
                     loading: false
                 };
        
@@ -70,7 +70,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 loading: false,
-                isAuth: true,
+                isAuthDoctor: true,
                 msg: payload.msg,
                 profile:null,
                // ...payload,
@@ -81,7 +81,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                 return {
                   ...state,
                   token: null,
-                  isAuth: false,
+                  isAuthDoctor: false,
                   profile:null,
                   profileById: null,
                   loading: false,
@@ -93,7 +93,7 @@ const profileReducer= (state = initialState, { type, payload }) => {
                       return {
                         ...state,
                         token: null,
-                        isAuth: false,
+                        isAuthDoctor: false,
                         user: null,
                         isLoading: false,
                       };
