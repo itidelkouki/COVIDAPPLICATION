@@ -55,7 +55,7 @@ const initialState = {
                 // ...payload,
               }
             case AUTH_ERRORS:
-              localStorage.removeItem('token');
+             // localStorage.removeItem('token');
                 return {
                   ...state,
                   token: null,

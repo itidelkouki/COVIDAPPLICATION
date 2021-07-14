@@ -21,7 +21,7 @@ import { POST_APPOINTMENTS,
              return {
                  ...state,
                  isLoading: false,
-                 isAuth: true,
+                 //isAuth: true,
                  msg: payload.msg,//({ msg: "appointment created", appointment, user });
                  ...payload,
                };
@@ -30,7 +30,7 @@ import { POST_APPOINTMENTS,
                  return {
                    ...state,
                    isLoading: false,
-                   isAuth: true,
+                  // isAuth: true,
                    ...payload,
                  };
                  case  DELETE_APPOINTMENT:
