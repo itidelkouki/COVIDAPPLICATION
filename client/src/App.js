@@ -23,6 +23,7 @@ import Questionnaire from'./components/auth/patient/Questionnaire';
 import MedicalFile from'./components/MedicalFile/MedicalFile';
 import Rdv from './components/RDV/RendezVous';
 import ListRdv from './components/RDV/ListRendezVous';
+import AllFiles from './components/MedicalFile/AllFiles';
 //import {getCurrentProfile} from './js/actions/profileActions';
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function App() {
   
 useEffect(() => {
     getUser();
-  //  getPatient();
+   //getPatient();
    // getCurrent();
    }, [getUser]);
 
@@ -57,6 +58,7 @@ useEffect(() => {
          <Route path="/medicalFile" component={ MedicalFile} />  
          <Route path="/Appointment" component={ Rdv} /> 
          <Route path="/ListRdv" component={ ListRdv} /> 
+         <Route path="/AllFiles" component={ AllFiles} />  
          <Footer/>
 
   </Switch>

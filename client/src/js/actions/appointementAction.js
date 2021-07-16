@@ -1,5 +1,5 @@
 import axios from "axios"
-import { POST_APPOINTMENTS,AUTH_ERRORS,USER_LOADING, GET_APPOINTMENTS,DELETE_APPOINTMENT} from '../constants/ActionsTypes';
+import { POST_APPOINTMENTS,AUTH_ERRORS,APPOINTMENT_LOADING, GET_APPOINTMENTS,DELETE_APPOINTMENT} from '../constants/ActionsTypes';
 //get Appointments
 export const getAppointment = () => async (dispatch) => {
     dispatch(userLoading());
@@ -24,7 +24,7 @@ export const getAppointment = () => async (dispatch) => {
   ////Set the user loading
 const userLoading = () => (dispatch) => {
     dispatch({
-      type: USER_LOADING,
+      type: APPOINTMENT_LOADING,
     });
   };
 // Post Appointment

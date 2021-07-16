@@ -5,7 +5,8 @@ import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING,GET_MEDICALFILES,DELETE_MEDI
 const initialState = {
   token: localStorage.getItem('token'),
     medicalfile:null,
-    isAuth: true,
+    isAuth: false,
+    isAuthDoctor:false,
     isLoading: true,
     msg: null,
   };
@@ -31,7 +32,7 @@ const initialState = {
             return {
               ...state,
               isLoading: false,
-              isAuth: true,
+              isAuthDoctor: true,
               ...payload,
             };
             case GET_FILE:
@@ -49,7 +50,7 @@ const initialState = {
               return{
                 ...state,
                 isLoading: false,
-                isAuth: true,
+                isAuthDoctor: true,
                 msg: payload.msg,
                 medicalfile: null,
                 // ...payload,

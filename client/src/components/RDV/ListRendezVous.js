@@ -22,7 +22,7 @@ const AppointmentList = () => {
 <ListGroup>
     <TransitionGroup className="Appointment_List">
             {
-             appointments&&  appointments.map(appointment=>  < CSSTransition key={appointment.id} appointment={appointment}  >  
+             appointments&&  appointments.map(appointment=>  < CSSTransition style={{}} key={appointment.id} appointment={appointment}  >  
 <ListGroupItem>
     <Button className="remove_btn"
     color="danger"
@@ -33,7 +33,7 @@ const AppointmentList = () => {
 </ListGroup>
         </Container>
         <div >
-       <Link to ='/RendezVous'><Button color="warning" >Go Back </Button></Link></div>
+       <Link to ='/Appointment'><Button color="warning" >Go Back </Button></Link></div>
         </div> </div>
     )
 }

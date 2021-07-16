@@ -21,7 +21,7 @@ const AppointmentSchema = new Schema({
             //   },
             date: {
                 type: Date,
-                default: new Date(),
+                default: Date.now()
             },
             });
             module.exports = Appointment= mongoose.model('Appointment', AppointmentSchema);

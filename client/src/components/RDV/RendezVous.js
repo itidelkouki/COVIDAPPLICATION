@@ -1,24 +1,31 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { Form,FormGroup ,Label,Input,Button } from 'reactstrap';
 import {useDispatch} from "react-redux"
 import { Link } from 'react-router-dom';
 // import BookAppointment from "./BookAppointment";
-import {createAppointment } from "../../js/actions/appointementAction";
+import {createAppointment} from "../../js/actions/appointementAction";
+import { getAuthPatient} from '../../js/actions/authPatientActions';
+import { useHistory } from 'react-router-dom';
+
 //import {getAuthPatient } from "../../js/actions/authPatientActions";
 // import ListRendezVous from "./ListRendezVous";
 import "../auth/patient/Questionnaire.css";
 const AddAppointment = () => {
- 
+  const getPatient = ()=>dispatch(getAuthPatient()); 
+  useEffect(() => {
+    getPatient();
+   }, []);
+
     const [patientname,setPatientname]=useState("");
     const [date,setDate]=useState("");
     const [time,setTime]=useState("");
     const dispatch=useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const addApp = () => {
   
     const newAppointment = { patientname, date };
       dispatch(createAppointment(newAppointment));
-      // history.push("/ListRendezVous");
+      history.push("/ListRdv");
       setPatientname('');
       setDate('');
       setTime('');

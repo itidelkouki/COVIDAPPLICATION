@@ -1,10 +1,10 @@
 import React , { useEffect, Fragment } from 'react';
 import {useDispatch,useSelector} from "react-redux"
 import {getProfile,deleteprofile ,getCurrentProfile} from '../../../js/actions/profileActions';
+import { getMedicalFile } from '../../../js/actions/medicalFileAction';
 import {Link} from 'react-router-dom';
 import { Spinner } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import EditModalProfile from "../../Profile/EditModalProfile";
 import {
   Card, CardImg,  CardBody,
   CardTitle, CardSubtitle, Button
@@ -13,14 +13,16 @@ import {
 
 const DoctorDashboard = () => {
   const dispatch=useDispatch()
-//const getCurrent = () => dispatch(getCurrentProfile());
-
- /* useEffect(() => {
-  getCurrent();
- },[]);*/
+  const getAllFiles = () => {dispatch(getMedicalFile());
+    history.push('/AllFiles');
+  }
+ 
 
   const getCurrent  = () => {dispatch(getCurrentProfile());
     history.push('/doctorprofile');
+  }
+  const getPro  = () => {dispatch(getProfile());
+    history.push('/profiles');
   }
 
   const deleteProf = (id) => dispatch(deleteprofile(id));
@@ -56,7 +58,7 @@ color: 'white',
 textTransform:' uppercase',
 fontSize: '2rem',
 letterSpacing: '0.5rem',
-fontWeight: 'bold'}} tag="h5">Profile</CardTitle>
+fontWeight: 'bold'}} tag="h5">Account</CardTitle>
           <CardSubtitle tag="h4" style={{  textAlign:'left'}} > NAME: {doctor && doctor.name}</CardSubtitle>
           <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}}>lASTNAME: {doctor && doctor.lastName}</CardSubtitle>
           <CardSubtitle tag="h4" style={{ marginTop:"5px", textAlign:'left'}} >Email: {doctor && doctor.email}</CardSubtitle>
@@ -72,8 +74,8 @@ fontWeight: 'bold'}} tag="h5">Profile</CardTitle>
           {/* <Button className="btn btn-info"  onClick= {getPro}>View profiles</Button> */}
           <br/>
           <div>
-      
-      <p>You have not any Profile add your Profile..</p>
+          <br/>
+      <p>If you have not any Profile yet add your Profile..</p>
       <Link to='/create-profile' className="btn btn-info">
       Create Profile
       </Link>
@@ -87,12 +89,21 @@ fontWeight: 'bold'}} tag="h5">Profile</CardTitle>
       <img src="https://png.pngtree.com/element_our/png_detail/20181026/doctor-avatar-icon-medical-health-specialist-avatar-woman-doctor-avatar-png_219874.jpg" style={{ height:'500px',  width:'400px', marginLeft:'300px', borderRadius:'50%' }}/> 
       
       </div>
-      {/* <EditModalProfile/> */}
+      <div>
+      <Button className="btn btn-info"  onClick= {getPro}>View profiles</Button> 
+      <br/>{}
+      <CardImg top src="https://img2.freepng.fr/20180409/pqq/kisspng-directory-computer-icons-macos-folders-5acb6cd5675724.8236642915232811094233.jpg" alt="Card image cap" style={{width:"30%", height:"30%" ,marginTop:'0px' , }}  />
+
+      <Button className="btn btn-info"  onClick= {getAllFiles}>All medicalfiles</Button> 
+      
+
+      </div>
+      
     </div>
     
-     
+
       
-      
+    
     </div>
 
   );

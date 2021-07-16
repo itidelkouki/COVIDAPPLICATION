@@ -1,17 +1,18 @@
 import { POST_APPOINTMENTS,
-    USER_LOADING,
+    APPOINTMENT_LOADING,
     GET_APPOINTMENTS,
     DELETE_APPOINTMENT,
     AUTH_ERRORS} from '../constants/ActionsTypes';
    const initialState = {
        token: localStorage.getItem('token'),
-         isAuth: true,
+        //isAuth: false,
          isLoading: true,
          msg: null,
+         appointment:null,
        };
        const appointmentReducer = (state = initialState, { type, payload }) => {
          switch (type) {
-           case USER_LOADING:
+           case APPOINTMENT_LOADING:
              return {
                ...state,
                isLoading: true,
@@ -21,16 +22,16 @@ import { POST_APPOINTMENTS,
              return {
                  ...state,
                  isLoading: false,
-                 //isAuth: true,
+                //isAuth: true,
                  msg: payload.msg,//({ msg: "appointment created", appointment, user });
                  ...payload,
                };
                case GET_APPOINTMENTS:
-                 // localStorage.getItem('token');
+                 localStorage.getItem('token');
                  return {
                    ...state,
                    isLoading: false,
-                  // isAuth: true,
+                  //isAuth: true,
                    ...payload,
                  };
                  case  DELETE_APPOINTMENT:
@@ -38,7 +39,7 @@ import { POST_APPOINTMENTS,
                  return{
                    ...state,
                    isLoading: false,
-                   isAuth: true,
+                   //isAuth: true,
                    msg: payload.msg,
                    // ...payload,
                  }
@@ -47,7 +48,7 @@ import { POST_APPOINTMENTS,
                      return {
                        ...state,
                        token: null,
-                       isAuth: false,
+                       //isAuth: false,
                        user: null,
                        isLoading: false,
                      };

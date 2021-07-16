@@ -10,11 +10,13 @@ module.exports = {
       });
       const appointment= await newAppointment.save();
       // console.log("1",appointment)
-      const user = await User.findOne({ _id: req.user._id });
+     const user = await User.findOne({ _id: req.user._id });
       // console.log("2",user)
-      user.Appointments.push (appointment._id);
+     // user.Appointments.push (appointment._id);
       // console.log("3",user)
-      await user.save();
+     // await user.save();
+
+      
     // console.log("4",user)
       res.json({ msg: "appointment created", appointment, user });
     } catch (error) {

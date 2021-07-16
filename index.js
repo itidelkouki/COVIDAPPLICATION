@@ -15,11 +15,13 @@ const authRouter = require('./routes/authDoctor');
 const profileRouter=require("./routes/profile");
 const authPatient= require('./routes/authPatient');
 const medicalFileRouter=require('./routes/medicalFile');
+const appointmentRouter=require('./routes/appointment');
 // Use routes
 app.use('/api/auth', authRouter);
 app.use("/api/profiles", profileRouter)
 app.use('/api/authPatient',authPatient)
 app.use('/api/medicalFile',medicalFileRouter)
+app.use('/api/appointment',appointmentRouter);
 // connect to DB
 connect()
 

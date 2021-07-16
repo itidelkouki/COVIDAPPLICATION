@@ -1,7 +1,9 @@
 const express=require("express")
 const router=express.Router();
-const appointmentController=require("../../controllers/appointmentController")
-const isAuth=require("../../middlewares/isAuth")
+const appointmentController=require(".././controllers/appointmentController");
+const isAuth=require("../middlewares/isAuth")
+const isAuthDoctor = require('../middlewares/isAuthDoctor');
+
 // http://localhost:5000/api/appointment/newAppointment
 // create an Appointment
 // 

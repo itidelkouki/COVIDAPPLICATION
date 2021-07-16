@@ -117,24 +117,6 @@ button:active {
   
 
 }
-.flex-section {
-  display: flex;
-  justify-content: space-between;
-  
- 
-}
-
-.flex-section > div {
-  
-  background-color: #f1f1f1;
-  /* width: 200px;
-  margin: 8px;
-  text-align: center;
-  line-height: 95px;
-  font-size: 40px; */
-}
-.doctors{
-  display: flex;
-  justify-content: space-between;
-  background-color:#f1f1f1;
+.services{
+  height: 300px;
 }
